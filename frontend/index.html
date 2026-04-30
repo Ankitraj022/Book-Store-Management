@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Management System</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="script.js"></script>
+
+</head>
+<body>
+
+    <div id="bookstore-section" style="display: none;">
+        <h2>Welcome to the Bookstore</h2>
+        <table border1="1">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td>The Great Gatsby</td>
+                <td>F. Scott Fitzgerald</td>
+                <td>$10</td>
+            </tr>
+            <tr>
+                <td>1984</td>
+                <td>George Orwell</td>
+                <td>$15</td>
+            </tr>
+        </table>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <header>
+        <div class="header-content">
+            <!-- Diwali LED Lights -->
+            <div class="led-lights-border">
+                <div class="light-strip top"></div>
+                <div class="light-strip bottom"></div>
+                <div class="light-strip left"></div>
+                <div class="light-strip right"></div>
+            </div>
+  
+            <div class="theme-switch-wrapper">
+                <input type="checkbox" id="checkbox" />
+                <label for="checkbox" class="toggle-label">
+                  <span class="icon moon">🌙</span>
+                  <span class="icon sun">☀️</span>
+                  <div class="ball"></div>
+                </label>
+              </div>
+            
+            <div class="img-store">
+                <img src="bookstore.png" height="190px" alt="Bookstore Logo">
+            </div>
+            <div class="header-center">
+                <h1>Bookstore Management System</h1>
+                <p id="welcome-user">Welcome, Guest!</p>
+            <nav>
+                <ul>
+                    <li><a href="login.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+            </p>
+                <nav>
+                    <ul>
+                        <li><a href="#books"><i class="fas fa-book"></i> Books</a></li>
+                        <li><a href="#authors"><i class="fas fa-user-pen"></i> Authors</a></li>
+                        <li><a href="#customers"><i class="fas fa-users"></i> Customers</a></li>
+                        <li><a href="#orders"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+                        <li><a href="#payments"><i class="fas fa-credit-card"></i> Payments</a></li>
+                        <li><a href="#employees"><i class="fas fa-user-tie"></i> Employees</a></li>
+                        <li><a href="#suppliers"><i class="fas fa-truck"></i> Suppliers</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Books Section -->
+        <section id="books">
+            <h2><i class="fas fa-book"></i> Books</h2>
+            <div class="search-bar">
+                <input type="text" id="search-books" placeholder="Search books...">
+                <button onclick="searchBooks()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div id="book-list" class="data-list"></div>
+        </section>
+
+        <!-- Authors Section -->
+        <section id="authors">
+            <h2><i class="fas fa-user-pen"></i> Authors</h2>
+            <div class="search-bar">
+                <input type="text" id="search-authors" placeholder="Search authors...">
+                <button onclick="searchAuthors()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div id="author-list" class="data-list"></div>
+        </section>
+
+        <!-- Customers Section -->
+        <section id="customers">
+            <h2><i class="fas fa-users"></i> Customers</h2>
+            <div class="search-bar">
+                <input type="text" id="search-customers" placeholder="Search customers...">
+                <button onclick="searchCustomers()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div id="customer-list" class="data-list"></div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders">
+            <h2><i class="fas fa-shopping-cart"></i> Orders</h2>
+            <div class="search-bar">
+                <input type="text" id="search-orders" placeholder="Search orders...">
+                <button onclick="searchOrders()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div id="order-list" class="data-list"></div>
+        </section>
+
+        <!-- Payments Section -->
+        <section id="payments">
+            <h2><i class="fas fa-credit-card"></i> Payments</h2>
+            <div class="search-bar">
+                <input type="text" id="search-payments" placeholder="Search payments...">
+                <button onclick="searchPayments()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div id="payment-list" class="data-list"></div>
+        </section>
+
+        <!-- Employees Section -->
+        <section id="employees">
+            <h2><i class="fas fa-user-tie"></i> Employees</h2>
+            <div class="search-bar">
+                <input type="text" id="search-employees" placeholder="Search employees...">
+                <button onclick="searchEmployees()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div id="employee-list" class="data-list"></div>
+        </section>
+
+        <!-- Suppliers Section -->
+        <section id="suppliers">
+            <h2><i class="fas fa-truck"></i> Suppliers</h2>
+            <div class="search-bar">
+                <input type="text" id="search-suppliers" placeholder="Search suppliers...">
+                <button onclick="searchSuppliers()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div id="supplier-list" class="data-list"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Bookstore Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const toggleSwitch = document.getElementById('checkbox');
+    
+        // Check localStorage for saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            toggleSwitch.checked = true;
+        }
+    
+        toggleSwitch.addEventListener('change', () => {
+            if (toggleSwitch.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+    <script>
+        const borders = ['top', 'bottom', 'left', 'right'];
+        borders.forEach(side => {
+          const container = document.querySelector(`.light-strip.${side}`);
+          for (let i = 0; i < 25; i++) {
+            const bulb = document.createElement('span');
+            container.appendChild(bulb);
+          }
+        });
+      </script>
+      
+</body>
+</html>
